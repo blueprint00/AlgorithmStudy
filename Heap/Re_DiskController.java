@@ -32,7 +32,7 @@ public class Re_DiskController {
 			// 작업이 끝나기 전(end 이전) 들어온 요청 중 가장 수행시간이 짧은 요청부터 수행
 			} else {
 				int[] temp = pq.poll();
-				answer += temp[1] + end - temp[0];
+				answer += temp[1] - temp[0] + end ;
 				end += temp[1];
 				cnt++;
 			}
