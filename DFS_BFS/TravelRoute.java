@@ -10,8 +10,14 @@ public class TravelRoute {
 	
 	public static String[] solution(String[][] tickets) {
         String[] answer = new String[tickets.length + 1];
-        
         boolean[] visited = new boolean[tickets.length];
+        
+        Arrays.sort(tickets, new Comparator<String[]>() {
+        	@Override
+        	public int compare(String[] o1, String[] o2) {
+        		return o1[1].compareTo(o2[1]);
+        	}
+        });
         
         answer[0] = "ICN";        
         int index = 1;
