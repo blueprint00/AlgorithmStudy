@@ -19,30 +19,21 @@ public class ConnectIsland {
 		return parent[n] = find(parent[n]);
 	}
 	
-	public static void union(int a, int b) {
-		int aRoot = find(a);
-		int bRoot = find(b);
-		if(aRoot != bRoot) parent[a] = b;
-	}
-	
 	public static int solution(int n, int[][] costs) {
         int answer = 0;
         parent = new int[n];
         
         Arrays.sort(costs, (o1, o2) -> (o1[2] - o2[2]));
        
-        int[] root = new int[n];
-        for(int i = 0; i < n; i ++) root[i] = i; // 초기 부모는 자기 자신
+        for(int i = 0; i < n; i ++) parent[i] = i; // 초기 부모는 자기 자신
         
         for(int i = 0; i < costs.length; i ++) { // 모든 간선에 대해서
-        	int start = costs[i][0];
-        	int end = costs[i][1];
-        	
-        	if(find(start) == find(end)) continue; // 최상위 부모가 같으면 == 사이클 형성
-        
-        	union(start, end); // 최상위 부모 설정
-        	answer += costs[i][2];
-        	
+        	int firstIsland = find(costs[i][0]);
+            int SecondIsland = find(costs[i][1]);
+            if(firstIsland != SecondIsland) {            //부모가 같지 않다면 연결이 안된 최솟값이므로
+                parent[SecondIsland] = firstIsland;    //연결
+                answer += costs[i][2];                    
+            }
         }
         return answer;
     }
