@@ -76,11 +76,13 @@ public class Runner {
         HashMap<String, Integer> map = new HashMap<>();
         
         for(String part : participant) {
-        	if(map.get(part) == null) {
-        		map.put(part, 1); // 참가자 수 카운트, 값 1
-        	} else {
-        		map.put(part, map.get(part) + 1); // 동명이인 있을 시 +1
-        	}
+            //210320
+        	// if(map.get(part) == null) {
+        	// 	map.put(part, 1); // 참가자 수 카운트, 값 1
+        	// } else {
+        	// 	map.put(part, map.get(part) + 1); // 동명이인 있을 시 +1
+        	// }
+            map.put(part, map.getOrDefault(part, 0) + 1); //210320
         }
         
         for(String comp : completion) {
