@@ -16,7 +16,7 @@ public class BestAlbum210320 {
         ArrayList<Integer> bestAlbum = new ArrayList<>();
         ArrayList<Song> songList = new ArrayList<>();
         HashMap<String, Integer> genreMap = new HashMap<>(); // 장르, 재생횟수
-        HashMap<String, Integer> albumMap = new HashMap<>(); // 앨범, 재생횟수
+        HashMap<String, Integer> albumMap = new HashMap<>(); // 앨범장르, 장르가 실린 횟수
 
         for(int i = 0; i < genres.length; i ++){
             int id = i;
@@ -45,8 +45,8 @@ public class BestAlbum210320 {
                 albumMap.put(song.genre, 1);
                 bestAlbum.add(song.id);
             } else {
-                int genreCnt  = albumMap.get(song.genre); // 해당 장르가 플레이 된 횟수
-                if(genreCnt >= 2) continue;
+                int genreCnt  = albumMap.get(song.genre); // 해당 장르가 추가 된 횟수
+                if(genreCnt >= 2) continue; // 두 개 까지만 싣기로 했으므로 2개 넘어가면 빠빠이
                 
                 albumMap.put(song.genre, genreCnt + 1);
                 bestAlbum.add(song.id);
