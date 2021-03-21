@@ -44,7 +44,6 @@ public class FunctionDevelopment {
 		}
 		return answer;
 
-
         // List<Integer> list = new ArrayList<>();
         // Queue<Integer> work = new LinkedList<>();
         
