@@ -11,37 +11,73 @@ public class FunctionDevelopment {
 	}
 	
 	public static int[] solution(int[] progresses, int[] speeds) {
-        List<Integer> list = new ArrayList<>();
-        Queue<Integer> work = new LinkedList<>();
+		//210321
+		List<Integer> list = new ArrayList<>();
+		Queue<Integer> work = new LinkedList<>();
+
+		int prevWork = 0;
+		int curWork = 0;
+		int numOfWork = 0;
+
+		for(int i = 0; i < progresses.length; i ++) {
+			int imsi = (100 - progresses[i]) / speeds[i];
+			if((100 - progresses[i]) % speeds[i] != 0) imsi += 1;
+			work.add(imsi);
+		}
+
+		prevWork = work.poll();
+		while(!work.isEmpty()){
+			curWork = work.poll();
+			if(prevWork >= curWork){
+				numOfWork ++;
+			} else {
+				list.add(numOfWork);
+				numOfWork = 1;
+				prevWork = curWork;
+			}
+		}
+		list.add(numOfWork);
+
+		int[] answer = new int[list.size()];
+		for(int i = 0; i < list.size(); i ++){
+			answer[i] = list.get(i);
+		}
+		return answer;
+
+
+        // List<Integer> list = new ArrayList<>();
+        // Queue<Integer> work = new LinkedList<>();
         
-        int prevWork = 0;
-        int curWork = 0;
-        int numOfWork = 1;
+        // int prevWork = 0;
+        // int curWork = 0;
+        // int numOfWork = 1;
         
-        for(int i = 0; i < progresses.length; i ++) {
-        	work.offer((100 - progresses[i]) / speeds[i] + 1); 
-        }
+		// //210321
+        // for(int i = 0; i < progresses.length; i ++) {
+		// 	int imsi = (100 - progresses[i]) / speeds[i];
+		// 	if((100 - progresses[i]) % speeds[i] != 0) imsi += 1;
+        // 	work.offer(imsi); 
+        // }
         
-    	prevWork = work.poll();
-    	
-        while(!work.isEmpty()) {
-        	curWork = work.poll();
+    	// prevWork = work.poll();
+        // while(!work.isEmpty()) {
+        // 	curWork = work.poll();
         	
-        	if(prevWork >= curWork) {
-        		numOfWork ++;
-        	} else {
-        		list.add(numOfWork);
-        		numOfWork = 1;
-        		prevWork = curWork;
-        	}
-        }
-        list.add(numOfWork);
+        // 	if(prevWork >= curWork) {
+        // 		numOfWork ++;
+        // 	} else {
+        // 		list.add(numOfWork);
+        // 		numOfWork = 1;
+        // 		prevWork = curWork;
+        // 	}
+        // }
+        // list.add(numOfWork);
         
-        int[] answer = new int[list.size()];
-        for(int i = 0 ; i < list.size(); i ++) {
-        	answer[i] = list.get(i);
-        }
+        // int[] answer = new int[list.size()];
+        // for(int i = 0 ; i < list.size(); i ++) {
+        // 	answer[i] = list.get(i);
+        // }
         
-        return answer;
+        // return answer;
     }
 }
