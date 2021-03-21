@@ -21,6 +21,7 @@ public class StockPrice {
             answer[i] = cnt;
         }
         return answer;
+        
         // int[] answer = new int[prices.length];
         
         // for(int i = 0; i < prices.length; i ++){
