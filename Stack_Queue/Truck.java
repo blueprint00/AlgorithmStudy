@@ -20,7 +20,7 @@ public class Truck {
 
 		while(lastEnterTruckIndex < truckNumber){
 			time ++;
-
+			
 			if(!bridge.isEmpty()){
 				Truck1 frontTruck = bridge.peek();
 				if(time - frontTruck.enterTime == bridge_length){
