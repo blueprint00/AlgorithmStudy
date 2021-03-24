@@ -9,11 +9,14 @@ public class DoublePriorityQueue {
 		}
 	}
 	
-    static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-    static PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    // static PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+    // static PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
 	public static int[] solution(String[] operations) {
         int[] answer = new int[2];
+
+		PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+	    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
                 
         for(int i = 0; i < operations.length; i ++){
             String op = operations[i].split(" ")[0];            
@@ -21,13 +24,17 @@ public class DoublePriorityQueue {
             
             switch(op){
             	case "I" : 
-            		insert(code);
+            		// insert(code);
+					maxHeap.offer(code);
+					minHeap.offer(code);
             		break;
             	case "D" : 
             		if(code == 1) {
-            			deleteMax();
+            			// deleteMax();
+						minHeap.remove(maxHeap.poll());
             		} else if(code == -1) {
-            			deleteMin();
+            			// deleteMin();
+						maxHeap.remove(minHeap.poll());
             		}
             		break;
             }
@@ -43,14 +50,14 @@ public class DoublePriorityQueue {
         return answer;
     }
 	
-	public static void insert(int num) {
-		maxHeap.offer(num);
-		minHeap.offer(num);
-	}
-	public static void deleteMax() {
-		minHeap.remove(maxHeap.poll());
-	}
-	public static void deleteMin() {
-		maxHeap.remove(minHeap.poll());
-	}
+	// public static void insert(int num) {
+	// 	maxHeap.offer(num);
+	// 	minHeap.offer(num);
+	// }
+	// public static void deleteMax() {
+	// 	minHeap.remove(maxHeap.poll());
+	// }
+	// public static void deleteMin() {
+	// 	maxHeap.remove(minHeap.poll());
+	// }
 }
