@@ -21,7 +21,6 @@ public class ExpressNum {
         int answer = 0;
         for(int i = 1; i <= n; i ++){
             answer += add(i, n);
-            System.out.println(answer);
         }
         return answer;
     }
