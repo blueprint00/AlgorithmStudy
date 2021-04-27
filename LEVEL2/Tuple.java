@@ -14,7 +14,6 @@ public class Tuple {
             String tmp = st.nextToken();
             if(!tmp.equals(",")) list.add(tmp);
         }
-
         // s = s.substring(2, s.length() - 1).replace("},{", "-");
         // String[] list = s.split("-"); 
         // Collections 아니고 Arrays
